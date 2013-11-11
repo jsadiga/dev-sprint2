@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Week 3 Web App </title>
+		<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+	</head>
+	<body> 
+		<div id='content'>
+			{% block body %}{% endblock %}
+
+		</dev>
+		<div id='nav'>
+			Navigation:<br />
+			<ul>
+				{% block nav %}{%endblock %}
+				<li><a href="{{url_for('remote')}}">remote control</a></li>
+				<li><a href="{{url_for('music')}}">music</a></li>
+			</ul>
+		</div>
+
+		
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

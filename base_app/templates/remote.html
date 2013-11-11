@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+	<h2>remote control</h2>
+
+
+		<center> Enter Python to Execute: </center>
+		<br>
+		<form action="{{url_for{'remote'}}}" method="post">
+			<center>
+				<input type="text" name="expression" />
+				<input type="submit" value="Execute" />
+			</center>
+		</form>
+		<center>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<br>
+				Results:
+				<pre>
+					{% for message in messages %}
+{{message}}
+					{% endfor %}
+				</pre>
+				{% endif %}
+			{% endwith %}
+			{% endblock %}
+		</center>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

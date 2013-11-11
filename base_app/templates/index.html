@@ -1,35 +1,29 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title> Week 2 Web App </title>
-		<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" type="text/css" href="/static/style.css" />
-        <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
-	</head>
-	<body> 
-		<br>
-		<center> Enter Python to Execute: </center>
-		<br>
-		<form action="/" method="post">
-			<center>
-				<input type="text" name="expression" />
-				<input type="submit" value="Execute" />
-			</center>
-		</form>
-		<center>
+{% extends "base.html" %}
+{% block body %}
+	<h1>Welcome!</h1>
+	{% if 'username' in session %}
+	<p>welcome back {{session['username']}}</p>
+	<form action="{{url_for('index')}}" method="post">
+		<input type="submit" name="logout" value="logout"/>
+	</form>
+	{% else %}
+	<p>a login is required</p>
+	<form action="{{url_for('index')}}" method="post">
+		<p>username:<br />
+			<input type="text" name="username" /></p>
+			<p>password:<br />
+				<input type="password" name="passwd"/></p>
+				<p><input type="submit" value="submit" /></p>
+			</form>
+			{% endif %}
+
 		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-				<br>
-				Results:
-				<pre>
-					{% for message in messages %}
+				{% for message in messages %}
 {{message}}
 					{% endfor %}
-				</pre>
-				{% endif %}
-			{% endwith %}
-		</center>
+					{% endwith %}
+					{% endblock %}
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
     	<script src="js/bootstrap.min.js"></script>
-	</body>
+	
 </html>

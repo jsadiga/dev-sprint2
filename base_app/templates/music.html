@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+	<h1>music</h1>
+	<audio controls="controls" autoplay="autoplay"></audio>
+
+
+		<ul>
+			{% for song in songs %}
+			<li><a href="javascript:void(0);" onclick="playsong('{{song}}')">{{song}}</a></li>
+			{% endfor %}
+
+		</ul>
+
+		{% with messages = get_flashed_messages() %}
+				{% for message in messages %}
+{{message}}
+					{% endfor %}
+					{% endwith %}
+					<script type="text/javascript">
+					  function playsong(song){
+					  	$('audio').attr('src','/static/music/'+song);
+					  }
+					</script>
+					{% endblock %}
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+	
+</html>
